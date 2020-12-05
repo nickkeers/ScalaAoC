@@ -52,20 +52,20 @@ class Day2 extends Solution {
     def puzzleLines: Parser[List[PuzzleLine]] = rep1(puzzleLine)
 
 
-    def apply(input: String): List[PuzzleLine] = {
+    def apply(input: String): Option[List[PuzzleLine]] = {
       parseAll(puzzleLines, input) match {
-        case Success(x, _) => x
+        case Success(x, _) => Some(x)
         case Error(x, _) =>
           println(s"ERROR: ${x}")
-          List()
+          None
         case Failure(x, in) =>
           println(s"FAILURE: ${x}")
-          List()
+          None
       }
     }
   }
 
-  val input: List[PuzzleLine] = PuzzleLineParser(readInputRaw(2))
+  val input: List[PuzzleLine] = PuzzleLineParser(readInputRaw(2)).getOrElse(List.empty)
 
   def partA(): Int = {
     input.count(pl => pl.success())

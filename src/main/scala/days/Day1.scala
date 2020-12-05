@@ -1,18 +1,18 @@
 package days
 
 class Day1 extends Solution {
-  val nums: List[Int] = readInput(1).map(_.toInt)
+  val numbers: List[Int] = readInput(1).map(_.toInt)
 
   def partA(): Any = for {
-    line <- nums
-    line2 <- nums
+    line <- numbers
+    line2 <- numbers
     if (line + line2) == 2020
   } return line * line2
 
   def partB(): Any = for {
-    line <- nums
-    line2 <- nums
-    line3 <- nums
+    line <- numbers
+    line2 <- numbers
+    line3 <- numbers
     if (line + line2 + line3) == 2020
   } return line * line2 * line3
 }

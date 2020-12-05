@@ -15,7 +15,7 @@ object Control {
       }
       Some(lines)
     } catch {
-      case e: Exception => None
+      case _: Exception => None
     }
   }
 
