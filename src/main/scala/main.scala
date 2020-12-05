@@ -1,31 +1,12 @@
-import scala.io.Source
+import days.{Day1, Day2}
 
 object main extends App {
-  def getMultipliersA(lines: List[Int]): List[(Int, Int)] = {
-    for {
-      line <- lines
-      line2 <- lines
-      if (line+line2) == 2020
-    } yield (line, line2)
+  lazy val solutions = List(new Day1(), new Day2() )
+
+  solutions.zip(1.to(solutions.length)).foreach{case (day, idx) =>
+    println(s"Day ${idx}\n---------------")
+    println(s"Part A: ${day.partA()}")
+    println(s"Part B: ${day.partB()}")
+    println()
   }
-
-  def getMultipliersB(lines: List[Int]): List[(Int, Int, Int)] = {
-    for {
-      line <- lines
-      line2 <- lines
-      line3 <- lines
-      if (line+line2+line3) == 2020
-    } yield (line, line2, line3)
-  }
-
-  val nums = Control.readTextFile("src/day1.txt").get.map(_.toInt)
-
-  getMultipliersA(nums).take(1) match {
-    case x @ List((a, b)) => println(s"${a*b}")
-  }
-
-  getMultipliersB(nums).take(1) match {
-    case x @ List((a, b, c)) => println(s"${a*b*c}")
-  }
-
 }
